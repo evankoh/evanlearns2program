@@ -23,16 +23,24 @@ class GameObject(object):
     
     def delete(self):
         self.canvas.delete(self.item)
+        
+class Ball(GameObject):
+    def __init__(self,canvas,x,y):
+        self.radius=10
+        self.direction=[1,-1]
+        self.speed=10
+        item=canvas.create_oval(x-self.radius,y-self.radius,x+self.radius,y+self.radius,fill='white')
+        super(Ball,self).__init__(canvas,item)
 
-item = canvas.create_rectangle(10,10,100,80,fill='green')
-game_object=GameObject(canvas,item)
+#item = canvas.create_rectangle(10,10,100,80,fill='green')
+#game_object=GameObject(canvas,item)
 
-print(game_object.get_position())
+#print(game_object.get_position())
 #[10,10,100,80]
-game_object.move(20,-10)
-print(game_object.get_position())
+#game_object.move(20,-10)
+#print(game_object.get_position())
 #[30,0,120,70]
-game_object.delete()
+#game_object.delete()
 
 if __name__=='__main__':
     root=tk.Tk()
