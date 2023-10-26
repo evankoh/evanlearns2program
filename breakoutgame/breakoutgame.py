@@ -1,5 +1,7 @@
+#To import tkinter library
 import tkinter as tk
 
+#Define Game class
 class Game(tk.Frame):
     def __init__(self,master):
         super(Game,self).__init__(master)
@@ -10,6 +12,7 @@ class Game(tk.Frame):
         self.canvas.pack()
         self.pack()
 
+#Define GameObject class to create assets in game
 class GameObject(object):
     def __init__(self,canvas,item):
         self.canvas=canvas
@@ -24,6 +27,7 @@ class GameObject(object):
     def delete(self):
         self.canvas.delete(self.item)
         
+#Define Ball class to create ball in game
 class Ball(GameObject):
     def __init__(self,canvas,x,y):
         self.radius=10
@@ -31,6 +35,20 @@ class Ball(GameObject):
         self.speed=10
         item=canvas.create_oval(x-self.radius,y-self.radius,x+self.radius,y+self.radius,fill='white')
         super(Ball,self).__init__(canvas,item)
+
+#Define Paddle class to create paddle in game
+class Paddle(GameObject):
+    def __init__(self,canvas,x,y):
+        self.width=80
+        self.height=10
+        self.ball=None
+        
+
+if __name__=='__main__':
+    root=tk.Tk()
+    root.title('Hello, Pong!')
+    game=Game(root)
+    game.mainloop()
 
 #item = canvas.create_rectangle(10,10,100,80,fill='green')
 #game_object=GameObject(canvas,item)
@@ -41,9 +59,3 @@ class Ball(GameObject):
 #print(game_object.get_position())
 #[30,0,120,70]
 #game_object.delete()
-
-if __name__=='__main__':
-    root=tk.Tk()
-    root.title('Hello, Pong!')
-    game=Game(root)
-    game.mainloop()
