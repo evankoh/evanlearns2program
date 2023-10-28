@@ -42,7 +42,12 @@ class Paddle(GameObject):
         self.width=80
         self.height=10
         self.ball=None
-        
+        item=canvas.create_rectangle(x-self.width/2,y-self.height/2,x+self.width/2,y+self.height/2,fill='blue')
+        super(Paddle,self).__init__(canvas,item)
+    
+    def set_ball(self,ball):
+        self.ball=ball
+    
 
 if __name__=='__main__':
     root=tk.Tk()
