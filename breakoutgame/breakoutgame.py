@@ -47,6 +47,14 @@ class Paddle(GameObject):
     
     def set_ball(self,ball):
         self.ball=ball
+        
+    def move(self,offset):
+        coords=self.get_position()
+        width=self.canvas.winfo_width()
+        if coords[0]+offset>=0 and coords[2] + offset <= width:
+            super(Paddle,self).move(offset,0)
+            if self.ball is not None:
+                self.ball.move(offset,0)
     
 
 if __name__=='__main__':
