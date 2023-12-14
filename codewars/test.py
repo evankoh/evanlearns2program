@@ -1,3 +1,7 @@
+sp='a-z'
+start_L=sp[2]
+print(start_L)
+
 #lst=['apple','orange','pear']
 #string=' '.join(lst)
 #print(string)
@@ -21,21 +25,21 @@
 #print(stop_omitted)
 #print(negative_index)
 
-def scramble(strng, array):
-    newlst=[]
-    while len(newlst)<len(strng):
-        newlst.append(0)
-    print(newlst)
-    strnglst=list(strng)
-    counter=0
-    for i in range(len(array)):
-        newlst[array[counter]]=strnglst[counter]
-        counter+=1
-        print(newlst)
-    print(newlst)
-    newstrng=''.join(newlst)
-    print(newstrng)
-    return newstrng
+#def scramble(strng, array):
+#    newlst=[]
+#    while len(newlst)<len(strng):
+#        newlst.append(0)
+#    print(newlst)
+#    strnglst=list(strng)
+#    counter=0
+#    for i in range(len(array)):
+#        newlst[array[counter]]=strnglst[counter]
+#        counter+=1
+#        print(newlst)
+#    print(newlst)
+#    newstrng=''.join(newlst)
+#    print(newstrng)
+#    return newstrng
 
 #scramble('hello',[0,3,1,2,4])
 #zipped=sorted(zip([0,3,1,2,4],'hello'))
@@ -47,5 +51,5 @@ def scramble(strng, array):
 #zippedlist=list(zip([4,2,1,3,0],"hello"))
 #print(zippedlist)
 
-tuplelst = list(v for _,v in sorted([(4, 'h'), (2, 'e'), (1, 'l'), (3, 'l'), (0, 'o')]))
-print(tuplelst)
+#tuplelst = list(v for _,v in sorted([(4, 'h'), (2, 'e'), (1, 'l'), (3, 'l'), (0, 'o')]))
+#print(tuplelst)
