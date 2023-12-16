@@ -1,6 +1,23 @@
-sp='a-z'
-start_L=sp[2]
-print(start_L)
+lst=['V0','V12','V1','V2','V3','V11']
+newlst=[]
+
+for i in lst:
+    newi=list(i)
+    newi.remove(newi[0])
+    newi2=int(''.join(newi))
+    newlst.append(newi2)
+
+newlst2=sorted(newlst)
+    
+
+print(newlst)
+
+#newlst=sorted(lst)
+#print(newlst)
+
+#sp='a-z'
+#start_L=sp[2]
+#print(start_L)
 
 #lst=['apple','orange','pear']
 #string=' '.join(lst)
