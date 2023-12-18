@@ -1,16 +1,20 @@
-lst=['V0','V12','V1','V2','V3','V11']
-newlst=[]
+str1='hello world'
+for i in str1:
+    print(i)
 
-for i in lst:
-    newi=list(i)
-    newi.remove(newi[0])
-    newi2=int(''.join(newi))
-    newlst.append(newi2)
+#lst=['V0','V12','V1','V2','V3','V11']
+#newlst=[]
 
-newlst2=sorted(newlst)
+#for i in lst:
+#    newi=list(i)
+#    newi.remove(newi[0])
+#    newi2=int(''.join(newi))
+#    newlst.append(newi2)
+
+#newlst2=sorted(newlst)
     
 
-print(newlst)
+#print(newlst)
 
 #newlst=sorted(lst)
 #print(newlst)
