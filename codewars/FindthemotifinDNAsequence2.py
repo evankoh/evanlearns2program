@@ -5,7 +5,6 @@ def motif_locator(sequence, motif):
         seq_lst=[]
         counter_index=0
         counter=0
-        counter2=0
         for i in sequence:
             if counter<=(len(sequence)-len(motif)+1):
                 checker=sequence[counter:(counter+len(motif))]
