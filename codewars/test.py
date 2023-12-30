@@ -1,6 +1,16 @@
-str1='hello world'
-for i in str1:
+def simple_generator():
+    yield 1
+    yield 2
+    yield 3
+
+gen=simple_generator()
+
+for i in gen:
     print(i)
+
+#str1='hello world'
+#for i in str1:
+#    print(i)
 
 #lst=['V0','V12','V1','V2','V3','V11']
 #newlst=[]
