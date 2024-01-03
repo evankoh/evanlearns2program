@@ -1,12 +1,19 @@
-def simple_generator():
-    yield 1
-    yield 2
-    yield 3
+try:
+    x = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Caught an exception: {e}")
+finally:
+    print("This will always be executed, even if an exception occurred.")
 
-gen=simple_generator()
+#def simple_generator():
+#    yield 1
+#    yield 2
+#    yield 3
 
-for i in gen:
-    print(i)
+#gen=simple_generator()
+
+#for i in gen:
+#    print(i)
 
 #str1='hello world'
 #for i in str1:
