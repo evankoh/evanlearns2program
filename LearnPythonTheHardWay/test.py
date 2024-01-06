@@ -1,6 +1,14 @@
-txt = "welcome to the jungle"
-x=txt.split()
-print(sorted(x))
+def apple():
+    print("I AM APPLES!")
+
+tangerine='Living reflection of a dream'
+
+#mystuff = {'apple':'I AM APPLES!'}
+#print(mystuff['apple'])
+
+#txt = "welcome to the jungle"
+#x=txt.split()
+#print(sorted(x))
 
 
 #from sys import argv
