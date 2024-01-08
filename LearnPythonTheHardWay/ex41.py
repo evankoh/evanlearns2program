@@ -27,7 +27,7 @@ if len(sys.argv) == 2 and sys.argv[1] == "english":
 
 # load up the words from the website
 for word in urlopen(WORD_URL).readlines():
-    WORDS.append(word.strip())
+    WORDS.append(word.strip().decode('utf-8'))
 
 
 def convert(snippet,phrase):
@@ -46,17 +46,17 @@ def convert(snippet,phrase):
     
         # fake class names
         for word in class_names:
-            result = result.replace("%%%",word,1)
+            result = result.replace("%%%",str(word),1)
         
         # fake other names
         for word in other_names:
-            result = result.replace("***",word,1)
+            result = result.replace("***",str(word),1)
         
         # fake parameter lists
         for word in param_names:
-            result = result.replace("@@@",word,1)
+            result = result.replace("@@@",str(word),1)
         
-        results.append(results)
+        results.append(result)
         
     return results
 
@@ -64,7 +64,7 @@ def convert(snippet,phrase):
 # keep going until they hit CTRL-D
 try:
     while True:
-        snippets = PHRASES.keys()
+        snippets = list(PHRASES.keys())
         random.shuffle(snippets)
         
         for snippet in snippets:
