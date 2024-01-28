@@ -114,43 +114,65 @@ let's try another idea!''')
 That's neither of the options, try again!''')
             return 'decide_idea'
             
-class LaserWeaponArmory(Scene):
-    
+class Books(Scene):
     def enter(self):
-        print('''You do a dive roll into the Weapon Armory, crouch and scan the room
-for more Gothons that might be hiding. It's dead quiet, too quiet.
-You stand up and run to the far side of the room and find the 
-neutron bomb in its container. There's a keypad lock on the box
-and you need the code to get the bomb out. If you get the code
-wrong 10 times then the lock closes forever and you can't
-get the bomb. The code is 3 digits.''')
-        code=(f"{randint(1,9)}{randint(1,9)}{randint(1,9)}")
-        guess=input('''
-[keypad]>
+        print('''
+Books?
+What can we do with books to get to the cookie jar?
+Hmm... I know! We can stack them! We have books all around the house! 
+But how many books do we need to stack in order to reach the cookie jar?
 ''')
+        numbooks=range(20,51)
+        guess=int(input())
         guesses=1
+        while guess<=20 or guess>50 and guesses < 10:
+            if guess<=20:
+                print('''
+That's too little books! Try again!
+How many books should we stack?''')
+                guesses+=1
+                guess=int(input())
+            elif guess>50:
+                print('''
+We don't have that many books in our house! Try again!
+How many books should we stack?''')
+                guesses+=1
+                guess=int(input())
         
-        while guess!=code and guesses < 10:
-            print("BZZZEDDD!")
-            guesses+=1
-            guess=input('''
-[keypad]>
-''')
+        if guesses==10:
+            print('''
+You're making too much of a ruckus shifting books and counting!
+Your mum finds you and sees what you have been up to! No cookies for you.
+Try again next time!''')
+            return 'bad_end'
             
-        if guess==code:
-            print('''The container clicks open and the seal breaks, letting gas out.
-You grab the neutron bomb and run as fast as you can to the
-bridge where you must place it in the right spot.''')
-            return 'the_bridge'
-        
-        else:
-            print('''The lock buzzes one last time and then you hear a sickening
-melting sound as the mechanism is fused together.
-You decide to sit there, and finally the Gothons blow up the
-ship from their ship and you die.''')
-            return 'death'
+        elif 20<guess<=50:
+            if chairpushed==True:
+                return 'chair_books'
+            else:
+                print('''
+That's it! We got the right number of books. Well done!
+You stack the books up and there we have it, a way to the cookies!
+You make your way to the top of the books but it seems the books
+aren't tall enough for you to reach the cookie jar!
 
-class TheBridge(Scene):
+Aww man.
+
+Hmm, do you think you should make a jump for it or get down and rethink?
+The stack of books is wobbling around as you ponder, make a decision quick!
+(1)Jump         (2)Get down''')
+                jumpordown=input()
+                if jumpordown=='1' or jumpordown=='Jump' or jumpordown=='jump':
+                    print('''
+
+''')
+                    return 'decide_idea'
+
+class Chair_Books(Scene):
+    def enter(self):
+        
+
+class Chair(Scene):
     def enter(self):
         print('''You burst into the Bridge with the neutron destruct bomb
 under your arm and surprise 5 Gothons who are trying to 
@@ -187,7 +209,7 @@ get off this tin can.''')
             print("DOES NOT COMPUTE!")
             return 'the_bridge'
 
-class EscapePod(Scene):
+class Swing(Scene):
     def enter(self):
         print('''You rush through the ship desperately trying to make it to
 the escape pod before the whole ship explodes. It seems like
@@ -225,6 +247,7 @@ class Map(object):
         'decide_idea':Decide_Idea(),
         'chair':Chair(),
         'books':Books(),
+        'chair_books':Chair_Books(),
         'swing':Swing(),
         'good_end':Good_End(),
         'bad_end':Bad_End()
