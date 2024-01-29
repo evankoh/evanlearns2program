@@ -25,7 +25,7 @@ class Bad_End(Scene):
     ]
     
     def enter(self):
-        ran_quips=(Death.quips[randint(0,len(self.quips)-1)])
+        ran_quips=(Bad_End.quips[randint(0,len(self.quips)-1)])
         print(f'''{ran_quips}
     
   _______   _____   __     __               _____              _____   _   _    _ 
@@ -164,12 +164,18 @@ The stack of books is wobbling around as you ponder, make a decision quick!
                 jumpordown=input()
                 if jumpordown=='1' or jumpordown=='Jump' or jumpordown=='jump':
                     print('''
-
+You take a leap of faith and make a jump for the cookie jar!
+Almost there, we can reach it, stretch up high and grab it!!
+Oh no, you start to fall before you reach the cookies.
+The stack of books start to fall off one by one.
+Before you know it, your face lands right smack on the kitchen floor.
+You start crying, your mum rushes in to see the mess of books and
+your tearing face.
 ''')
-                    return 'decide_idea'
+                    return 'bad_end'
 
-class Chair_Books(Scene):
-    def enter(self):
+#class Chair_Books(Scene):
+#    def enter(self):
         
 
 class Chair(Scene):
@@ -247,7 +253,7 @@ class Map(object):
         'decide_idea':Decide_Idea(),
         'chair':Chair(),
         'books':Books(),
-        'chair_books':Chair_Books(),
+#        'chair_books':Chair_Books(),
         'swing':Swing(),
         'good_end':Good_End(),
         'bad_end':Bad_End()
