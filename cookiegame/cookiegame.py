@@ -122,7 +122,6 @@ What can we do with books to get to the cookie jar?
 Hmm... I know! We can stack them! We have books all around the house! 
 But how many books do we need to stack in order to reach the cookie jar?
 ''')
-        numbooks=range(20,51)
         guess=int(input())
         guesses=1
         while guess<=20 or guess>50 and guesses < 10:
@@ -150,7 +149,12 @@ Try again next time!''')
             if chairpushed==True:
                 return 'chair_books'
             else:
-                print('''
+                return 'books_correct'
+                
+class Books_Correct(Scene):
+    def enter(self):
+        global booksstacked
+        print('''
 That's it! We got the right number of books. Well done!
 You stack the books up and there we have it, a way to the cookies!
 You make your way to the top of the books but it seems the books
@@ -161,9 +165,9 @@ Aww man.
 Hmm, do you think you should make a jump for it or get down and rethink?
 The stack of books is wobbling around as you ponder, make a decision quick!
 (1)Jump         (2)Get down''')
-                jumpordown=input()
-                if jumpordown=='1' or jumpordown=='Jump' or jumpordown=='jump':
-                    print('''
+        jumpordown=input()
+        if jumpordown=='1' or jumpordown=='Jump' or jumpordown=='jump':
+            print('''
 You take a leap of faith and make a jump for the cookie jar!
 Almost there, we can reach it, stretch up high and grab it!!
 Oh no, you start to fall before you reach the cookies.
@@ -172,7 +176,20 @@ Before you know it, your face lands right smack on the kitchen floor.
 You start crying, your mum rushes in to see the mess of books and
 your tearing face.
 ''')
-                    return 'bad_end'
+            return 'bad_end'
+        elif jumpordown=='2' or jumpordown=='Get down' or jumpordown=='get down':
+            print('''
+Good on you, safety first!
+Since you have already stacked the books,
+perhaps you can try stacking the books on something else
+to reach the cookie jar?
+''')
+            booksstacked=True
+            return 'decide_idea'
+        else:
+            print('''
+That's neither of the options, try again!''')
+            return 'books_correct'
 
 #class Chair_Books(Scene):
 #    def enter(self):
@@ -180,16 +197,13 @@ your tearing face.
 
 class Chair(Scene):
     def enter(self):
-        print('''You burst into the Bridge with the neutron destruct bomb
-under your arm and surprise 5 Gothons who are trying to 
-take control of the ship. Each of them has an even uglier
-clown costume than the last. They haven't pulled their 
-weapons out yet, as they see the active bomb under your 
-arm and don't want to set it off.''')
-        
-        action=input('''
-throw the bomb, slowly place the bomb
+        print('''
+Chair?
+It's a little far for the cabinet. Hmm... what can you do with it?
+Well, we can try climbing onto the chair or maybe pushing it closer to the cabinet?
 ''')
+
+        action=input('(1)Climb chair        (2)Push chair\n')
         
         if action=="throw the bomb":
             print('''In a panic you throw the bomb at the group of Gothons 
@@ -253,6 +267,7 @@ class Map(object):
         'decide_idea':Decide_Idea(),
         'chair':Chair(),
         'books':Books(),
+        'books_correct':Books_Correct(),
 #        'chair_books':Chair_Books(),
         'swing':Swing(),
         'good_end':Good_End(),
