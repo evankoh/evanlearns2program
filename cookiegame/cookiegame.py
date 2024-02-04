@@ -98,6 +98,7 @@ let's try another idea!''')
                 return 'chair'
             
         elif action=='2' or action=='Books' or action=='books':
+            print(booksstacked)
             if booksstacked==True:
                 print('''
 Books have already been stacked,
@@ -116,6 +117,7 @@ That's neither of the options, try again!''')
             
 class Books(Scene):
     def enter(self):
+        global booksstacked
         print('''
 Books?
 What can we do with books to get to the cookie jar?
@@ -147,6 +149,7 @@ Try again next time!''')
             
         elif 20<guess<=50:
             if chairpushed==True:
+                booksstacked=True
                 return 'chair_books'
             else:
                 return 'books_correct'
@@ -191,9 +194,40 @@ to reach the cookie jar?
 That's neither of the options, try again!''')
             return 'books_correct'
 
-#class Chair_Books(Scene):
-#    def enter(self):
-        
+class Chair_Books(Scene):
+    def enter(self):
+        print('''
+Hey look! You have both a stack of books and a chair near the cabinet!
+Eureka! How about we try stacking the books onto the chair?
+That way, it'll be tall enough for you to reach the cookie jar!
+
+.
+
+..
+
+...
+
+Okay, the books are stacked onto the chair, great job!
+Looking at the tower of books on the chair, it does look kind of scary..
+Should we climb it or think of something else?
+
+(1)Climb        (2)Don't climb''')
+        action=input()
+        if action=='1' or action=='Climb' or action=='climb':
+            print('''
+You decide to climb the books and the chair!
+As you climb, the books start to lose balance and give way.
+The books begin to fall and the next thing you know,
+you're back on the ground again and crying your eyes out.
+''')
+            return 'bad_end'
+        elif action=='2' or action=="don't climb" or action=="Don't climb":
+            print('''
+It's too scary to climb!
+You decide not to climb it, take a step back.
+Maybe there's another way to get on top of the stack of books and chair?
+''')
+            return 'decide_idea'
 
 class Chair(Scene):
     def enter(self):
@@ -205,29 +239,46 @@ Well, we can try climbing onto the chair or maybe pushing it closer to the cabin
 
         action=input('(1)Climb chair        (2)Push chair\n')
         
-        if action=="throw the bomb":
-            print('''In a panic you throw the bomb at the group of Gothons 
-and make a leap for the door. Right as you drop it a 
-Gothon shoots you right in the back killing you.
-As you die you see another Gothon frantically try to disarm
-the bomb. You die knowing they will probably blow up when 
-it goes off.''')
-            return 'death'
+        if action=='1' or action=='Climb chair' or action=='Climb chair':
+            print('''
+You climb the chair, it's kind of high isn't it?
+The cabinet is quite a distance away, hmm...
+We could make a jump for it, or get down and perhaps push the chair over to the cabinet?
+''')
+            jumporpush=input('(1)Jump       (2)Get down\n')
+            if jumporpush=='1' or jumporpush=='Jump' or jumporpush=='jump':
+                print('''
+You decide to jump from the chair towards the cabinet!
+The cookie jar is getting closer and closer, but you start to fall-
+SPLAT! You land face flat onto the kitchen floor.
+''')
+                return 'bad_end'
+            elif jumporpush=='2' or jumporpush=='Get down' or jumporpush=='get down':
+                print('''
+Wise choice! You got down from the chair and slowly push it
+over to the cabinet.''')
+                return 'chair_push'
         
-        elif action=="slowly place the bomb":
-            print('''You point your blaster at the bomb under your arm
-and the Gothons put their hands up and start to sweat.
-You inch backward to the door, open it, and then carefully
-place the bomb on the floor, pointing your blaster at it.
-You then jump back through the door, punch the close button
-and black the lock so the Gothons can't get out.
-Now that the bomb is placed you run to the escape pad to 
-get off this tin can.''')
-            return 'escape_pod'
-        
+        elif action=='2' or action=='Push chair' or action=='push chair':
+            return 'chair_push'
+
         else:
-            print("DOES NOT COMPUTE!")
-            return 'the_bridge'
+            print("That's not one of the choices!")
+            return 'chair'
+
+class Chair_Push(Scene):
+    def enter(self):
+        global chairpushed
+        chairpushed=True
+        if booksstacked==True:
+            return 'chair_books'
+        else:
+            print('''
+You have pushed the chair to the cabinet!
+Hmm... the chair seems to be too short for you to reach the cookie jar.
+Maybe you can try stacking something else on the chair?
+''')
+            return 'decide_idea'
 
 class Swing(Scene):
     def enter(self):
@@ -268,7 +319,8 @@ class Map(object):
         'chair':Chair(),
         'books':Books(),
         'books_correct':Books_Correct(),
-#        'chair_books':Chair_Books(),
+        'chair_push':Chair_Push(),
+        'chair_books':Chair_Books(),
         'swing':Swing(),
         'good_end':Good_End(),
         'bad_end':Bad_End()
