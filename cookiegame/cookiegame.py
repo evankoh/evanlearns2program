@@ -98,7 +98,6 @@ let's try another idea!''')
                 return 'chair'
             
         elif action=='2' or action=='Books' or action=='books':
-            print(booksstacked)
             if booksstacked==True:
                 print('''
 Books have already been stacked,
@@ -122,8 +121,7 @@ class Books(Scene):
 Books?
 What can we do with books to get to the cookie jar?
 Hmm... I know! We can stack them! We have books all around the house! 
-But how many books do we need to stack in order to reach the cookie jar?
-''')
+But how many books do we need to stack in order to reach the cookie jar?''')
         guess=int(input())
         guesses=1
         while guess<=20 or guess>50 and guesses < 10:
@@ -133,6 +131,24 @@ That's too little books! Try again!
 How many books should we stack?''')
                 guesses+=1
                 guess=int(input())
+            elif guess==69:
+                print('''
+What's this?
+
+You found the secret code!
+
+The books begin to float and starts to form steps of stairs towards the kitchen cabinet!
+
+What's going on?
+
+More importantly, the cookies!!
+
+You dash up the stairway made of books, open the cabinet and there you have it,
+the cookie jar filled with delicious cookies!
+
+Wow you did it!
+''')
+                return 'good_end'
             elif guess>50:
                 print('''
 We don't have that many books in our house! Try again!
@@ -196,6 +212,8 @@ That's neither of the options, try again!''')
 
 class Chair_Books(Scene):
     def enter(self):
+        global chairbooks
+        chairbooks=True
         print('''
 Hey look! You have both a stack of books and a chair near the cabinet!
 Eureka! How about we try stacking the books onto the chair?
@@ -282,36 +300,89 @@ Maybe you can try stacking something else on the chair?
 
 class Swing(Scene):
     def enter(self):
-        print('''You rush through the ship desperately trying to make it to
-the escape pod before the whole ship explodes. It seems like
-hardly any Gothons are on the ship, so your run is clear of
-interference. You get to the chamber with the escape pods, and
-now need to pick one to take. Some of them could be damaged
-but you don't have time to look. There's 5 pods, which one
-do you take?''')
-        
-        good_pod=randint(1,5)
-        guess=input('''
-[pod #]> 
+        print('''
+You chose the swing!
+Steadily one hand after the other, you climb your way up the kitchen curtain.
+You're getting higher and higher, up you go!
+I-It's a little high up, isn't it?
+
+So what's it going to be? Are you going to make a swing for the cookie jar?
+''')
+
+        guess=input('''(1)Swing         (2)Don't swing
 ''')
         
-        if int(guess) != good_pod:
-            print(f'''You jump into pod {guess} and hit the eject button.
-The pod escapes out into the void of space, then
-implodes as the hull ruptures, crushing your body
-into jam jelly.''')
-            return 'death'
-        
+        if guess=='1' or guess=='swing' or guess=='Swing':
+            if chairbooks==False:
+                print('''
+You take the leap of faith and swing towards the cookie jar!
+Your hands let go of the curtain and you find yourself soaring across the kitchen.
+The cookie jar is getting closer and closer, you can smell the cookies already!
+
+What's this?!
+
+The cookies are getting further and further away! Oh no!
+
+You're falling!!!
+
+Ahhhhhhhhhh--!
+
+You land face flat onto the ground and a puddle of tears starts to form around your face.
+Your mum hears the commotion and quickly runs into the kitchen to see you on the floor.
+
+Hmm...
+You might want to try putting some items near the cabinet 
+next time to land on and reach the cookie jar!''')
+                return 'bad_end'
+            else:
+                print('''
+You make a jump for it and let go of the kitchen curtain,
+you begin to fly across the kitchen!
+
+Wow, that's amazing!
+
+You see the cookie jar getting bigger and bigger,
+you can almost smell it!
+
+Gravity kicks in and you start to fall a little,
+thankfully you have the stack of books and chair that you prepared earlier!
+
+You reposition yourself and make a safe landing onto the contraption!
+
+With your head held high, you open the cabinet door and 
+reach for the jar of happiness and goodness.
+
+Munch munch munch, you did it!
+
+The cookies are yours!!!
+
+Hurray!!!
+
+Munch munch munch.
+
+Hmm, now that that's done, how do you get down from here?''')
+                return 'good_end'
+        elif guess=='2' or guess=="don't swing" or guess=="Don't swing":
+            if chairbooks==True:
+                print('''
+You decided not to swing?
+But you're almost there!
+
+You've already stacked the books and the chair,
+don't give up!''')
+                return 'swing'
+            else:
+                print('''
+Good on you for not trying something so reckless!
+Hmm... maybe you should try another idea first?
+''')
+                return 'decide_idea'
         else:
-            print(f'''You jump into pod {guess} and hit the eject button.
-The pod easily slides out into space heading to
-the planet below. As it flies to the planet, you look
-back and see your ship implode then explode like a 
-bright star, taking out the Gothon ship at the same
-time. You won!''')
-            
-            
-            return 'finished'
+            print('''
+That's neither of the options!
+Pick again!
+''')
+            return 'swing'
 
 class Map(object):
     scenes = {
@@ -337,6 +408,7 @@ class Map(object):
 
 chairpushed=False
 booksstacked=False
+chairbooks=False
 a_map = Map('decide_idea')
 a_game=Engine(a_map)
 a_game.play()
