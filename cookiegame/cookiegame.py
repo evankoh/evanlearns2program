@@ -26,7 +26,7 @@ class Bad_End(Scene):
     
     def enter(self):
         ran_quips=(Bad_End.quips[randint(0,len(self.quips)-1)])
-        print(f'''{ran_quips}
+        bad_input=input(f'''{ran_quips}
     
   _______   _____   __     __               _____              _____   _   _    _ 
  |__   __| |  __ \  \ \   / /      /\      / ____|     /\     |_   _| | \ | |  | |
@@ -35,8 +35,12 @@ class Bad_End(Scene):
     | |    | | \ \     | |      / ____ \  | |__| |  / ____ \   _| |_  | |\  |  |_|
     |_|    |_|  \_\    |_|     /_/    \_\  \_____| /_/    \_\ |_____| |_| \_|  (_)
 
+(1)Try again        (2)Quit
 ''')
-        exit(1)
+        if bad_input=='1' or bad_input=='Try again' or bad_input=='try again':
+            return 'decide_idea'
+        else:
+            exit(1)
 
 class Good_End(Scene):
     def enter(self):
