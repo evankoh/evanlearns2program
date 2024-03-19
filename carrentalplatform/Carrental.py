@@ -23,8 +23,8 @@ Available quantity: {self.quantity}/{self.quantity+self.rented}
       self.rented = rented
       if rent_type == 'hourly':
         rent_type_time = datetime.timedelta(hours=rent_time)
-        self.rent_time_hour = int(rent_type_time.seconds/3600)  #convert time to hourly for price
-        self.cost=self.rent_time_hour*self.price                     #convert time to price
+        self.rent_time_hour = int(rent_type_time.seconds/3600)    #convert time to hourly for price
+        self.cost=self.rent_time_hour*self.price                  #convert time to price
         return self.rent_time_hour, self.cost
       elif rent_type == 'daily':
         rent_type_time = datetime.timedelta(days=rent_time)
@@ -61,7 +61,6 @@ class Customer(object):
     self.rent_quantity=None
     self.rent_type=None
     self.rent_time=None
-    #self.return_car=None
     self.return_car_flag=True
     
   def request_car(self,car_model,rent_quantity,rent_type,rent_time,return_car_flag):
@@ -138,7 +137,9 @@ Invalid input, please try again.
     rent_time=int(input('''
 How long would you like to rent the car? (Hours/Days/Weeks)
 '''))
+    
     return_car=False
+    
     Car_Customer.request_car(car_model,rent_quantity,rent_type,rent_time,return_car)
     print(f'''
 Thank you for renting with us!
@@ -150,7 +151,9 @@ Rent time: {Car_Customer.rent_time} {rent_type2}
 
 We hope you have a pleasant journey!
 
-
+.
+..
+...
 
 Hi, welcome back.
 Please return your rental before making another transaction:
@@ -161,6 +164,7 @@ Please return your rental before making another transaction:
       rent_time_hour, cost = Bumblebee.rent(Car_Customer.rent_quantity,Car_Customer.rent_type,Car_Customer.rent_time)
     elif Car_Customer.car_model=='Mr. Bean':
       rent_time_hour, cost = Mrbean.rent(Car_Customer.rent_quantity,Car_Customer.rent_type,Car_Customer.rent_time)
+      
     if Car_Customer.car_model=='Optimus Prime':
       Optimusprime.return_car(Optimusprime.rent_time_hour,Car_Customer.rent_type,Optimusprime.cost)
       Car_Customer.return_car()
@@ -182,6 +186,7 @@ Have a nice day!
 You have not rented a car yet.
 ''')
       Main_Method()
+      
   elif action=='5' or action=='Exit' or action=='exit':
     exit_app=input('''
 Are you sure you wish to exit?
@@ -210,14 +215,3 @@ rent_time=None
 return_car=Car_Customer.return_car_flag
       
 Main_Method()
-          
-#rent_time_hour,cost=Optimusprime.rent(1,rent_type,rent_time)
-
-#print(f'Rent time is {rent_time_hour} hours. Cost is ${cost}.')
-
-#Optimusprime.display_car()
-
-#Optimusprime.return_car(rent_time,rent_type,cost)
-
-#Optimusprime.display_car()
-
