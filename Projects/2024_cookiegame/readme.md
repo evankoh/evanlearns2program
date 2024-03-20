@@ -27,15 +27,15 @@ This project is my first attempt at making a game using Python ever since I star
 ## How to run game without installing Python or using any shells, compilers (for Windows):
 1. Download cookiegame.py
 2. If you have Python3 and Windows PowerShell installed on your machine:
-	a. Open Windows PowerShell from your windows search
-	b. Change directory (write cd before pasting the directory path) to the directory you have saved the file to (e.g. cd D:\Admin\Python\pythonlearning\Projects\2024_cookiegame)
-	c. Enter this line: python cookiegame.py
+a. Open Windows PowerShell from your windows search
+b. Change directory (write cd before pasting the directory path) to the directory you have saved the file to (e.g. cd D:\Admin\Python\pythonlearning\Projects\2024_cookiegame)
+c. Enter this line: python cookiegame.py
 3. If you do not have Python installed on your machine:
-	a. Open cookie.py in notepad
-	b. Select-All (Ctrl+A), copy (Ctrl+C)
-	c. Go to this website on your browser: https://www.online-python.com/
-	d. Paste (Ctrl+V) the code into the main.py box
-	e. Click run
+a. Open cookie.py in notepad
+b. Select-All (Ctrl+A), copy (Ctrl+C)
+c. Go to this website on your browser: https://www.online-python.com/
+d. Paste (Ctrl+V) the code into the main.py box
+e. Click run
 
 
 
