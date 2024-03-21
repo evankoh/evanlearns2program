@@ -1,6 +1,6 @@
 # Car Rental Platform Project
 
-## A car rental platform text-based project that allows user to rent cars based on a hourly, daily or weekly basis and return said cars and the platform will generate a bill based on the rental.
+## A car rental platform text-based project that allows the user to rent cars based on a hourly, daily or weekly basis and return said cars and the platform will generate a bill based on the rental.
 
 An assignment project where I was tasked to build an online car rental platform using Object-Oriented Programming (OOP) in Python. This code is written with the intention of showcasing my understanding of OOP in Python to allow users to:
 
