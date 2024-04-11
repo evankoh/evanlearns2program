@@ -44,9 +44,37 @@ def export_selected_FBX(name):
     """
     # Construct the file path with the desired naming convention and file extension
     scene_file_path = cmds.file(q=True, sceneName=True)
+    
+    # To retrieve the directory name of the current Maya scene file
     file_dir = os.path.dirname(scene_file_path)
+    
+    # To create the file path for the exported asset
     file_path = os.path.join(file_dir, f"{name}.fbx")
-    export_selected = cmds.file(file_path, options="v=2018", exportSelected=True, type='FBX export')
+    
+    # To specify the options required for the exported asset
+    options = (
+        'v=2018;'
+        'smoothing=1;'
+        'smoothMesh=1;'
+        'useTriangulation=1;'
+        'animation=1;'
+        'deformedModels=1;'
+        'skins=1;'
+        'blendShapes=1;'
+        'curveFilters=1;'
+        'constraints=1;'
+        'skeletons=1;'
+        'embedMedia=1;'
+        'includeChildren=1;'
+        'inputConnections=1;'
+        'upAxis=Z;'
+        'fbx=2018;'
+        'binary=1;'
+    )
+    
+    
+    # To export the .FBX file with the desired attributes
+    export_selected = cmds.file(file_path, options=options, exportSelected=True, type='FBX export')
 
 # Specify the string pattern to search for in object names    
 search_pattern = custom_prompt_dialog('Please input naming convention of objects you wish to select:')
@@ -54,5 +82,8 @@ search_pattern = custom_prompt_dialog('Please input naming convention of objects
 # Call the function to select objects with names containing the specified pattern
 select_objects_by_name_pattern(search_pattern)
 
+# Specify the string pattern to search for in object names    
+asset_name = custom_prompt_dialog('Please input desired name of asset to be exported:')
+
 # Export selected assets in Outliner as .FBX file
-export_selected_FBX(search_pattern)
+export_selected_FBX(asset_name)
