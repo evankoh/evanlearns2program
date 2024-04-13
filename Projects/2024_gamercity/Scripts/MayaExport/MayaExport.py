@@ -30,7 +30,11 @@ def select_objects_by_name_pattern(pattern):
     all_objects = cmds.ls(dag=True, long=True)
     
     # Filter objects based on the name pattern
-    matching_objects = [obj for obj in all_objects if pattern in obj]
+    #matching_objects = [obj for obj in all_objects if pattern in obj]
+    matching_objects=[]
+    for obj in all_objects:
+        if pattern in obj:
+            matching_objects.append(obj)
     
     # Select the matching objects in the Outliner with the object hierarchy selected
     cmds.select(matching_objects, replace=True, hierarchy=True)
