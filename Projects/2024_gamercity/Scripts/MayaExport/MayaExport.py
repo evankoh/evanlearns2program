@@ -9,7 +9,12 @@ def custom_prompt_dialog(custom_message):
         custom_message(str): The string is to retrieve and input the custom message.
     """
     # Show prompt dialog with custom message
-    result = cmds.promptDialog(title='Custom Input', message=custom_message, button=['OK','Cancel'], defaultButton='OK', cancelButton='Cancel')
+    result = cmds.promptDialog(
+        title='Custom Input', 
+        message=custom_message, 
+        button=['OK','Cancel'], 
+        defaultButton='OK', 
+        cancelButton='Cancel')
     
     # Check the result of the prompt dialog
     if result == 'OK':
