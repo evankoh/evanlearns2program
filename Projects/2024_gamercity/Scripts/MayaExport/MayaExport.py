@@ -79,6 +79,7 @@ def export_selected_FBX(name):
         'upAxis=Z;'
         'fbx=2018;'
         'binary=1;'
+        'snapAnimationToFrame=1;'
     )
     
     
