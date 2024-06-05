@@ -51,3 +51,5 @@ def getAssetClass(classType):
         print(asset)
         
     return assets_lst
+
+listAssetPaths()
