@@ -1,3 +1,5 @@
+# Copyright 2024 by Evan Koh Wen Hong
+
 from pathlib import Path as Path    # Import Path class from pathlib module to retrieve file path of assets to import
 from typing import List     # Import List class to assist with the importing of assets
 import unreal

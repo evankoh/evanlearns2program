@@ -1,4 +1,4 @@
-# Copyright 2024 by Evan Koh Wen Hong, Scrawl Animation
+# Copyright 2024 by Evan Koh Wen Hong
 
 import maya.cmds as cmds
 import os
