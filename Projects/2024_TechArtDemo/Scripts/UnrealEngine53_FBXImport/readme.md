@@ -37,8 +37,8 @@ If you wish to help make this code better, you can reach out to me via email: kw
 
 The following technical concerns may be addressed in further updates:
 
-* Tool to distinguish between static and skeletal meshes without input from user (currently, the static and skeletal meshes have to be placed into different file paths and imported separately).
-* Provide user with more control over import settings if they wish to amend any parameters that were preset in the tool (the tool was created for the users to import assets easily and efficiently without the worry of selecting the wrong presets for import; however, the tool can be further improved by giving users an option if they wish to edit the preset before import).
+* Tool unable to distinguish between static and skeletal meshes without input from user (currently, the static and skeletal meshes have to be placed into different file paths and imported separately).
+* Would be great to provide user with more control over import settings if they wish to amend any parameters that were preset in the tool (the tool was created for the users to import assets easily and efficiently without the worry of selecting the wrong presets for import; however, the tool can be further improved by giving users an option if they wish to edit the preset before import).
 
 ## Like this code?
 
