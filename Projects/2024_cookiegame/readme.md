@@ -16,7 +16,7 @@ This project is my first attempt at making a game using Python ever since I star
 ## Access relevant files for game flow and logic
 * Design flow chart: cookiegame_designflowchart.drawio.png
 * UML class diagram: cookiegame_UMLclassdiagram.drawio.png
-* Process of creating game documented on my wordpress: https://evanpython.wordpress.com/
+* Process of creating game documented on my wordpress: https://evanlearns2program.wordpress.com/
 
 ## How to run game (for Windows):
 1. Download cookiegame.py

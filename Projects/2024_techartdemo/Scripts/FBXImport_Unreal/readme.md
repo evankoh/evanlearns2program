@@ -12,7 +12,7 @@ This Python Tool was created with the intention of allowing users to:
 
 ## Access relevant files for tool flow and logic
 
-* Process of creating code documented on my wordpress: https://evanpython.wordpress.com/
+* Process of creating code documented on my wordpress: https://evanlearns2program.wordpress.com/
 
 ## How to run code (for Windows, Unreal Engine 5.3.2):
 

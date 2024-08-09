@@ -16,7 +16,7 @@ The objective of the assignment is to be able to:
 
 ## Access relevant files for game flow and logic
 
-* Process of creating code documented on my wordpress: https://evanpython.wordpress.com/
+* Process of creating code documented on my wordpress: https://evanlearns2program.wordpress.com/
 
 ## How to run code (for Windows):
 1. Download Carrental.py
