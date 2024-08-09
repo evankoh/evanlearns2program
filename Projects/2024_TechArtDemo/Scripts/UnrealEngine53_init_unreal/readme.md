@@ -11,7 +11,7 @@ This code was written to serve as a method for users to access the Python tools 
 ## How to run code (for Windows, Unreal Engine 5.3.2):
 
 1. Download init_unreal.py
-2. Download other custom python tools in my GitHub (please see https://github.com/evankoh/evanlearns2program/tree/main/Projects/2024_techartdemo/Scripts)
+2. Download other custom python tools in my GitHub (please see https://github.com/evankoh/evanlearns2program/tree/main/Projects/2024_TechArtDemo/Scripts)
 3. Create new or use in existing Unreal Engine Project (may not work for versions older than 5.3.2)
 4. In Unreal Engine Project, create a 'Python' folder in the 'Content' folder; place init_unreal.py and other python scripts into 'Python' folder
 5. Upon opening the Unreal Engine Project, the 'MyCustomTools' custom menu should be visible in the top menu bar of the software (right of 'Help'); run python tools from the custom menu
