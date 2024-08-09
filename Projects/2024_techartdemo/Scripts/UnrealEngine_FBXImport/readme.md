@@ -4,7 +4,7 @@
 
 This Python Tool was created with the intention of allowing users to:
 
-* Call Python Tool from Custom Menu, another Python Tool that I have created (please see https://github.com/evankoh/evanlearns2program/tree/main/Projects/2024_techartdemo/Scripts/init_unreal)
+* Call Python Tool from Custom Menu, another Python Tool that I have created (please see https://github.com/evankoh/evanlearns2program/tree/main/Projects/2024_techartdemo/Scripts/UnrealEngine_init_unreal)
 * Prompt user to input file path of static / skeletal meshes to import into project
 * Prompt user to select between importing static or skeletal meshes (the import settings differs depending on the selection)
 * Automation of import for meshes in FBX files located in file path provided
@@ -17,7 +17,7 @@ This Python Tool was created with the intention of allowing users to:
 ## How to run code (for Windows, Unreal Engine 5.3.2):
 
 1. Download FBXImport.py and FilePathInputWidget.uasset
-2. Download init_unreal.py (https://github.com/evankoh/evanlearns2program/tree/main/Projects/2024_techartdemo/Scripts/init_unreal)
+2. Download init_unreal.py (https://github.com/evankoh/evanlearns2program/tree/main/Projects/2024_techartdemo/Scripts/UnrealEngine_init_unreal)
 3. Create new or use in existing Unreal Engine Project (may not work for versions older than 5.3.2)
 4. In Unreal Engine Project, create a 'Python' folder in the 'Content' folder; place FBXImport.py and init_unreal.py into 'Python' folder
 5. In Unreal Engine Project, create a 'Widgets' folder in the 'Content' folder; place FilePathInputWidget.uasset into 'Widgets' folder
