@@ -44,6 +44,8 @@ def skeletal_importdata_options():
     
     options = unreal.FbxImportUI()  # Unreal class containing the general options required to import fbx files (specific to neither static or skeletal meshes)
     options.import_mesh = True
+    options.create_physics_asset = True
+    options.import_as_skeletal = True
     options.import_textures = False
     options.import_materials = False
     options.automated_import_should_detect_type = True
@@ -94,20 +96,23 @@ def asset_filepath(filepath, result, options):
 
 # Import assets into project
 def mesh_import(assets_to_import, destination_path, options):
-    tasks: List[unreal.AssetImportTask] = []    #Type Hinting to check if the 'task' variable has a list assigned to it holding the 'unreal.AssetImportTask' class object as an item
+    tasks: List[unreal.AssetImportTask] = []    # Type Hinting to check if the 'task' variable has a list assigned to it holding the 'unreal.AssetImportTask' class object as an item
     
     for input_file_path in assets_to_import:
-            filename_stem = input_file_path.stem #stem = method to get final path component without suffix as str; item is a Path object (see 'assets_to_import')
-            task = unreal.AssetImportTask()
-            task.automated = True
-            task.filename = str(input_file_path) #convert input_file_path, which is a Path object, into a string
-            task.destination_path = create_folder_in_content_browser(destination_path, filename_stem)
-            task.destination_name = filename_stem
-            task.replace_existing = True #to replace existing assets in project if found, not skip if existing
-            task.save = True #enable save with every asset imported to prevent data loss in the event of a crash
-            task.options = options
-            
-            tasks.append(task)
+            filename_stem = input_file_path.stem # stem = method to get final path component without suffix as str; item is a Path object (see 'assets_to_import')
+            if unreal.EditorAssetLibrary.does_directory_exist('/Game/Meshes/' + filename_stem):     # Checks if an asset already exists in the project via its folder; if yes, it will skip the import
+                unreal.log_warning(f"Asset '{filename_stem}' already exists. Skipping to the next asset.")
+            else:
+                task = unreal.AssetImportTask()
+                task.automated = True
+                task.filename = str(input_file_path) # convert input_file_path, which is a Path object, into a string
+                task.destination_path = create_folder_in_content_browser(destination_path, filename_stem)
+                task.destination_name = filename_stem
+                task.replace_existing = True # to replace existing assets in project if found, not skip if existing
+                task.save = True # enable save with every asset imported to prevent data loss in the event of a crash
+                task.options = options
+                
+                tasks.append(task)
     
     unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks(tasks)
     
