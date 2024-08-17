@@ -10,11 +10,11 @@ This Python Tool was created with the intention of allowing users to:
 * Automation of export for asset hierarchy from Maya scene file into desired destination file path as .fbx file (this is especially helpful when exporting asset to other software e.g. Unreal Engine)
 * This tool works for both rigged and non-rigged assets in Maya 2022
 * This tool exports the following data into the .fbx file:
-- Mesh with skin weights
-- Rig / Bone hierarchy
-- Facial blend shapes
-- Material IDs
-- HumanIK configuration "Custom Rig Mapping"
+* - Mesh with skin weights
+* - Rig / Bone hierarchy
+* - Facial blend shapes
+* - Material IDs
+* - HumanIK configuration "Custom Rig Mapping"
 
 ## Access relevant files for tool flow and logic
 
