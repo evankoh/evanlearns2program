@@ -100,7 +100,7 @@ def export_selected_FBX(name):
     mel.eval('FBXExportAnimationOnly -v false;')
     mel.eval('FBXExportBakeComplexAnimation -v true;')
     mel.eval('FBXExportApplyConstantKeyReducer -v true;')  # Apply constant key reducer if needed
-    mel.eval('FBXExportAnimation -v true;')  # Explicitly enable animation export
+    #mel.eval('FBXExportAnimation -v true;')  # Explicitly enable animation export
     mel.eval('FBXExportConstraints -v true;')
     mel.eval('FBXExportSkins -v true;')
     mel.eval('FBXExportShapes -v true;')

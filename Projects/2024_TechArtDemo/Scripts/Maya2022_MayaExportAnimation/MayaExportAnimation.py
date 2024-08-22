@@ -1,6 +1,7 @@
 # Copyright 2024 by Evan Koh Wen Hong
 
 import maya.cmds as cmds
+import maya.mel as mel
 import os
 
 def custom_prompt_dialog(custom_message):
@@ -62,31 +63,23 @@ def export_selected_FBX(name):
     # To create the file path for the exported asset
     file_path = os.path.join(file_dir, f"{name}.fbx")
     
-    # To specify the options required for the exported asset
-    options = (
-        'v=2018;'
-        'smoothing=1;'
-        'smoothMesh=1;'
-        'useTriangulation=1;'
-        'animation=1;'
-        'deformedModels=1;'
-        'skins=1;'
-        'blendShapes=1;'
-        'curveFilters=1;'
-        'constraints=1;'
-        'skeletons=1;'
-        'embedMedia=1;'
-        'includeChildren=1;'
-        'inputConnections=1;'
-        'upAxis=Z;'
-        'fbx=2018;'
-        'binary=1;'
-        'snapAnimationToFrame=1;'
-    )
-    
-    
-    # To export the .FBX file with the desired attributes
-    export_selected = cmds.file(file_path, options=options, exportSelected=True, type='FBX export')
+    # Open the Game Exporter UI
+    mel.eval('gameExporter')
+
+    # Set the file path for export
+    cmds.textField('gameExp_FilenameField', edit=True, text=file_path)
+
+    # Set the frame range from the time slider
+    frame_start = cmds.playbackOptions(query=True, minTime=True)
+    frame_end = cmds.playbackOptions(query=True, maxTime=True)
+    cmds.intField('gameExp_FrameRangeStart', edit=True, value=int(frame_start))
+    cmds.intField('gameExp_FrameRangeEnd', edit=True, value=int(frame_end))
+
+    # Enable export of the currently selected objects
+    cmds.checkBox('gameExp_ExportSelectedCheckbox', edit=True, value=True)
+
+    # Trigger the export process
+    cmds.button('gameExp_ExportButton', execute=True)
 
 # Specify the string pattern to search for in object names    
 search_pattern = custom_prompt_dialog('Please input root name of asset you wish to export: (e.g. ASSET)')
