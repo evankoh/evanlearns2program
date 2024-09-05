@@ -1,12 +1,12 @@
 # Maya Export Animation Python Tool for Autodesk Maya 2022
 
-## A Python Tool to allow user to export specific referenced assets and/or Unreal Engine camera object from Maya scene as individual FBX files. This tool is mainly used for exporting assets from Maya scene files containing animation data of multiple referenced assets for external software such as Unreal Engine.
+## A Python Tool to allow users to export specific referenced assets and/or Unreal Engine camera object from Maya scene as individual FBX files. This tool is mainly used for exporting assets from Maya scene files containing animation data of multiple referenced assets for external software such as Unreal Engine.
 
 This Python Tool was created with the intention of allowing users to:
 
 * Call Python Tool from Script Editor or Script saved to Maya shelf
 * Allow user to select a checklist of assets referenced in the Maya scene file as well as the Unreal Engine specific 'Cine_Camera_Actor' object (the listed assets will all be checked by default)
-* The tool will then export every checked asset as individual FBX files into the same file directory as the Maya scene file. This is to ensure smooth and efficient transfer of mesh, rig and animation data across different software and game engines (e.g. Unreal Engine)
+* The tool will then export every checked asset as individual FBX files into the same file directory as the Maya scene file with the appropriate naming convention (Maya scene file name as the prefix, asset name as the root word). This is to ensure smooth and efficient transfer of mesh, rig and animation data across different software and game engines (e.g. Unreal Engine)
 
 ## Access relevant files for tool flow and logic
 
@@ -30,7 +30,7 @@ If you wish to help make this code better, you can reach out to me via email: kw
 
 ## Known issues
 
-* Tool does not allow user to pinpoint the file directory of the newly exported assets
+* Tool does not allow users to pinpoint the file directory of the newly exported assets
 
 ## Like this code?
 
