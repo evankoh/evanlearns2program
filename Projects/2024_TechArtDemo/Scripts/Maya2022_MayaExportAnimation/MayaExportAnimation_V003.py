@@ -53,13 +53,17 @@ class Main_Window(object):
         cmds.showWindow()
     
     def export_selected_assets(self, *args):
-        # Get the current Maya scene name (without extension)
-        scene_name = os.path.splitext(os.path.basename(cmds.file(q=True, sn=True)))[0]
+        # Get the current Maya scene name and directory (without extension)
+        scene_file_path = cmds.file(q=True, sn=True)
+        scene_name = os.path.splitext(os.path.basename(scene_file_path))[0]
         if not scene_name:
             scene_name = "untitled_scene"
 
-        # Directory path for exports (you can modify this as needed)
-        export_dir = "D:/Admin/Python/pythonlearning/Projects/2024_TechArtDemo/Scripts/Maya2022_MayaExportAnimation/"
+        # Use the directory of the Maya scene file as the export directory
+        export_dir = os.path.dirname(scene_file_path)
+
+        # Ensure all slashes are forward slashes for compatibility
+        export_dir = export_dir.replace('\\', '/')
         
         # Export selected assets
         for checkbox in self.checkboxes:
@@ -72,7 +76,7 @@ class Main_Window(object):
                 
         # Check if the user wants to export "Cine_Camera_Actor"
         if self.camera_checkbox and cmds.checkBoxGrp(self.camera_checkbox, query=True, value1=True):
-            camera_file_path = f"{export_dir}{scene_name}_Cine_Camera_Actor.fbx"
+            camera_file_path = f"{export_dir}/{scene_name}_Cine_Camera_Actor.fbx"
             cmds.select("Cine_Camera_Actor")
             export_fbx_selection_with_correct_up_axis(camera_file_path)
             print(f"Exported Cine_Camera_Actor to {camera_file_path}")
@@ -88,7 +92,7 @@ def export_referenced_assets(export_dir, scene_name, namespace):
         cmds.select(objects_in_namespace, replace=True)
         
         # Construct the export file path using the scene name
-        file_path = f"{export_dir}{scene_name}_{namespace}.fbx"
+        file_path = f"{export_dir}/{scene_name}_{namespace}.fbx"
         
         # Set the FBX up-axis to Z (for Unreal Engine)
         mel.eval('FBXExportUpAxis "z"')
